@@ -37,10 +37,10 @@ class Eastron_SDM72Dv2(device.EnergyMeter):
         super(Eastron_SDM72Dv2, self).__init__(*args)
 
         self.info_regs = [
-            Reg_u16(0xfc02, '/HardwareVersion'),
-            Reg_u16(0xfc03, '/FirmwareVersion'),
-            Reg_f32b(0x000a, '/PhaseConfig', text=phase_configs, write=(0, 3)),
-            Reg_u32b(0x0014, '/Serial'),
+            Reg_u16(0xfc02, '/HardwareVersion', access="holding"),
+            Reg_u16(0xfc03, '/FirmwareVersion', access="holding"),
+            Reg_f32b(0x000a, '/PhaseConfig', text=phase_configs, write=(0, 3), access="holding"),
+            Reg_u32b(0x0014, '/Serial', access="holding"),
         ]
 
     def phase_regs(self, n):
